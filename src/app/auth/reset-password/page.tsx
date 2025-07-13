@@ -57,7 +57,7 @@ export default function ResetPasswordPage() {
 
             setSuccess(true);
             setTimeout(() => {
-                router.push('/app/hetzner-storage');
+                router.push('/app/storage-boxes');
             }, 3000);
         } catch (err) {
             if (err instanceof Error) {

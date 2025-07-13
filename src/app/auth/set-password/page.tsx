@@ -36,7 +36,7 @@ export default function SetPasswordPage() {
     // Check if user already has a password set
     const hasPassword = user.user_metadata?.has_password || false;
     if (hasPassword) {
-      router.push('/app/hetzner-storage');
+      router.push('/app/storage-boxes');
       return;
     }
 
@@ -71,7 +71,7 @@ export default function SetPasswordPage() {
       if (updateError) throw updateError;
 
       toast.success('Password set successfully!');
-      router.push('/app/hetzner-storage');
+      router.push('/app/storage-boxes');
     } catch (err) {
       console.error('Error setting password:', err);
       setError(err instanceof Error ? err.message : 'Failed to set password');

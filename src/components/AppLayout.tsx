@@ -54,7 +54,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
 
     const navigation = [
-        { name: 'Storage Management', href: '/app/hetzner-storage', icon: HardDrive },
+        { name: 'Storage Management', href: '/app/storage-boxes', icon: HardDrive },
         { name: 'Settings', href: '/app/settings', icon: Settings },
     ];
 

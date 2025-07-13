@@ -55,7 +55,7 @@ export async function GET(
     
     if (!response.ok) {
       const error = await response.json();
-      console.error('[Folders API] Hetzner API error:', error);
+      console.error('[Folders API] Storage API error:', error);
       return NextResponse.json(
         { error: error.error?.message || 'Failed to get folders' },
         { status: response.status }

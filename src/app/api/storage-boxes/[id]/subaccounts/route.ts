@@ -103,8 +103,8 @@ export async function POST(
       return NextResponse.json({ error: 'Storage box not found' }, { status: 404 });
     }
 
-    // Create Hetzner API client with global token
-    console.log('Creating Hetzner API client...');
+    // Create Storage API client with global token
+    console.log('Creating storage API client...');
     const hetznerApi = new HetznerAPI();
 
     try {
@@ -122,7 +122,7 @@ export async function POST(
         description: comment || '',
       };
       
-      console.log('=== HETZNER API CALL ===');
+      console.log('=== STORAGE API CALL ===');
       console.log('Creating subaccount for storage box ID:', storageBox.hetzner_id);
       console.log('Request payload:', JSON.stringify(requestPayload, null, 2));
       
@@ -138,11 +138,11 @@ export async function POST(
       // Create subaccount via Hetzner API
       const actionResponse = await hetznerApi.createSubAccount(storageBox.hetzner_id, requestPayload);
 
-      console.log('Hetzner API response:', JSON.stringify(actionResponse, null, 2));
+      console.log('Storage API response:', JSON.stringify(actionResponse, null, 2));
 
       // Check if action was successful or still running
       if (actionResponse.action.status === 'error') {
-        console.error('Hetzner API error:', actionResponse.action.error);
+        console.error('Storage API error:', actionResponse.action.error);
         throw new Error(actionResponse.action.error?.message || 'Failed to create subaccount');
       }
       
@@ -251,11 +251,11 @@ export async function POST(
         hetzner_id: subaccountResource.id,
         message: newSubaccount 
           ? 'Subaccount created successfully' 
-          : 'Subaccount creation initiated on Hetzner. Username will be updated automatically.'
+          : 'Subaccount creation initiated on storage server. Username will be updated automatically.'
       };
       
       console.log('=== SUBACCOUNT CREATION SUCCESS ===');
-      console.log('Hetzner subaccount ID:', subaccountResource.id);
+      console.log('Storage subaccount ID:', subaccountResource.id);
       console.log('Database record created with ID:', saved.id);
       
       return NextResponse.json(response);

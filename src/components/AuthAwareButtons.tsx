@@ -32,7 +32,7 @@ export default function AuthAwareButtons({ variant = 'primary' }) {
     if (variant === 'nav') {
         return isAuthenticated ? (
             <Link
-                href="/app/hetzner-storage"
+                href="/app/storage-boxes"
                 className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
             >
                 Go to Dashboard
@@ -55,7 +55,7 @@ export default function AuthAwareButtons({ variant = 'primary' }) {
     // Primary buttons for the hero section
     return isAuthenticated ? (
         <Link
-            href="/app/hetzner-storage"
+            href="/app/storage-boxes"
             className="inline-flex items-center px-6 py-3 rounded-lg bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors"
         >
             Go to Dashboard

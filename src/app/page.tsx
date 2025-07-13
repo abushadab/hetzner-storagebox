@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowRight, Globe, Shield, Users, Key, Database, Clock, Loader2 } from 'lucide-react';
+import { ArrowRight, Globe, Shield, Users, Key, Database, HardDrive, Loader2 } from 'lucide-react';
 import AuthAwareButtons from '@/components/AuthAwareButtons';
 import HomePricing from "@/components/HomePricing";
 import { createSPAClient } from '@/lib/supabase/client';
@@ -19,7 +19,7 @@ export default function Home() {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (user) {
-        router.push('/app/hetzner-storage');
+        router.push('/app/storage-boxes');
       } else {
         router.push('/auth/login');
       }
@@ -41,7 +41,7 @@ export default function Home() {
     {
       icon: Shield,
       title: 'Robust Authentication',
-      description: 'Secure login with email/password, Multi-Factor Authentication, and SSO providers',
+      description: 'Secure login with email/password and SSO providers',
       color: 'text-green-600'
     },
     {
@@ -51,16 +51,16 @@ export default function Home() {
       color: 'text-orange-600'
     },
     {
-      icon: Users,
-      title: 'User Settings',
-      description: 'Complete user management with password updates, MFA setup, and profile controls',
-      color: 'text-red-600'
+      icon: HardDrive,
+      title: 'Storage Box Management',
+      description: 'Manage external storage boxes with quota monitoring and subaccount control',
+      color: 'text-blue-600'
     },
     {
-      icon: Clock,
-      title: 'Task Management',
-      description: 'Built-in todo system with real-time updates and priority management',
-      color: 'text-teal-600'
+      icon: Users,
+      title: 'User Settings',
+      description: 'Complete user management with password updates and profile controls',
+      color: 'text-red-600'
     },
     {
       icon: Globe,

@@ -68,7 +68,7 @@ export async function GET(request: Request) {
         }
 
         // Redirect to app
-        return NextResponse.redirect(new URL('/app/hetzner-storage', request.url))
+        return NextResponse.redirect(new URL('/app/storage-boxes', request.url))
     }
 
     // If no code provided, redirect to login

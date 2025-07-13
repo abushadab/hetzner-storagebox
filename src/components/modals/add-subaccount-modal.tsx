@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Loader2, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
-import HetznerDirectoryTree from '@/components/ui/hetzner-directory-tree';
+import StorageDirectoryTree from '@/components/ui/storage-directory-tree';
 
 interface AddSubaccountModalProps {
   isOpen: boolean;
@@ -104,14 +104,14 @@ export default function AddSubaccountModal({
       }
 
       console.log('[AddSubaccountModal] Subaccount created successfully!');
-      console.log('[AddSubaccountModal] Hetzner ID:', responseData.hetzner_id);
+      console.log('[AddSubaccountModal] Storage ID:', responseData.hetzner_id);
       console.log('[AddSubaccountModal] Message:', responseData.message);
       
       toast.success(responseData.message || 'Subaccount created successfully');
       
       // If username is pending, show additional info
       if (responseData.subaccount?.username?.startsWith('pending-')) {
-        toast.info('The subaccount is being created on Hetzner. Please sync in a few moments to see the actual username.');
+        toast.info('The subaccount is being created on the storage server. Please sync in a few moments to see the actual username.');
       }
       
       onSuccess();
@@ -151,7 +151,7 @@ export default function AddSubaccountModal({
                 </button>
               </div>
               <div className="space-y-2">
-                <HetznerDirectoryTree
+                <StorageDirectoryTree
                   key={treeKey}
                   storageBoxId={storageBoxId}
                   selectedPath={selectedPath}

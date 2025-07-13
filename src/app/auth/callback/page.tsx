@@ -78,17 +78,42 @@ export default function AuthCallback() {
                     console.error('Error updating invite:', inviteError);
                   }
                 }
-              }
 
-              // Check if user needs to set password (for invited users)
-              const hasPassword = user.user_metadata?.has_password || false;
-              if (!hasPassword && type === 'invite') {
-                router.push('/auth/set-password');
-                return;
+                // Check if user needs to set password (for invited users)
+                const hasPassword = user.user_metadata?.has_password || false;
+                if (!hasPassword) {
+                  router.push('/auth/set-password');
+                  return;
+                }
+              } else {
+                // For regular signup email confirmations, ensure user profile exists
+                const { error: profileError } = await supabase
+                  .from('user_profiles')
+                  .insert({
+                    id: user.id,
+                    email: user.email!,
+                    full_name: user.user_metadata?.full_name || '',
+                  });
+
+                if (profileError && profileError.code !== '23505') {
+                  console.error('Error creating user profile:', profileError);
+                }
+
+                // Set default customer role if not exists
+                const { error: roleError } = await supabase
+                  .from('user_roles')
+                  .insert({
+                    user_id: user.id,
+                    role: 'customer',
+                  });
+
+                if (roleError && roleError.code !== '23505') {
+                  console.error('Error creating user role:', roleError);
+                }
               }
 
               // Redirect to app
-              router.push('/app/hetzner-storage');
+              router.push('/app/storage-boxes');
               return;
             }
           }

@@ -111,7 +111,7 @@ function AcceptInviteContent() {
       }
       
       // Redirect to app
-      router.push('/app/hetzner-storage');
+      router.push('/app/storage-boxes');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to accept invite');
       setAccepting(false);

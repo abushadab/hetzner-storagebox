@@ -25,7 +25,7 @@ export default function LoginPage() {
 
             if (signInError) throw signInError;
 
-            router.push('/app/hetzner-storage');
+            router.push('/app/storage-boxes');
         } catch (err) {
             if (err instanceof Error) {
                 setError(err.message);

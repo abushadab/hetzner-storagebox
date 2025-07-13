@@ -1,22 +1,22 @@
 # Storage Management System
 
-A Next.js application for managing Hetzner storage boxes and file storage with multi-tenant support, role-based access control, and comprehensive security features.
+A Next.js application for managing storage boxes and file storage with multi-tenant support, role-based access control, and comprehensive security features.
 
 ## Features
 
-- **Hetzner Storage Box Management**: Manage and monitor Hetzner storage boxes
+- **Storage Box Management**: Manage and monitor external storage boxes
 - **File Storage**: Upload, download, and share files using Supabase storage
 - **Multi-tenant Support**: Role-based access control (Admin, Moderator, Viewer)
-- **Security**: Encrypted credentials, 2FA support, secure authentication
+- **Security**: Encrypted credentials, secure authentication
 - **User Management**: Invite system, user roles, and permissions
 
 ## Tech Stack
 
 - **Frontend**: Next.js 15, React, TypeScript, Tailwind CSS
 - **Backend**: Next.js API Routes, Supabase
-- **Authentication**: Supabase Auth with 2FA support
+- **Authentication**: Supabase Auth with secure session management
 - **Database**: PostgreSQL (via Supabase)
-- **Storage**: Supabase Storage & Hetzner Storage Boxes
+- **Storage**: Supabase Storage & External Storage Boxes
 
 ## Getting Started
 
@@ -48,7 +48,7 @@ cp .env.template .env.local
 4. Configure your `.env.local` file with:
    - Supabase credentials
    - Encryption key
-   - Hetzner API credentials
+   - Storage API credentials
 
 5. Run the development server
 ```bash

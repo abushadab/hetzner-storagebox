@@ -11,7 +11,7 @@ export default async function AdminLayout({
   const adminUser = await isAdmin();
   
   if (!adminUser) {
-    redirect('/app/hetzner-storage');
+    redirect('/app/storage-boxes');
   }
 
   return (
@@ -49,7 +49,7 @@ export default async function AdminLayout({
           
           <div className="mt-8 pt-8 border-t border-gray-700">
             <Link 
-              href="/app/hetzner-storage" 
+              href="/app/storage-boxes" 
               className="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-800 transition-colors text-gray-400"
             >
               <ArrowLeft className="w-5 h-5" />

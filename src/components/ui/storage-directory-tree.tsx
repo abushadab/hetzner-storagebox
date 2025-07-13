@@ -253,7 +253,7 @@ const TreeNodeComponent: React.FC<TreeNodeComponentProps> = ({
   );
 };
 
-export default function HetznerDirectoryTree({
+export default function StorageDirectoryTree({
   storageBoxId,
   selectedPath,
   onSelect,

@@ -21,7 +21,7 @@ interface StorageBox {
   created_at: string;
 }
 
-export default function HetznerStoragePage() {
+export default function StorageBoxesPage() {
   const router = useRouter();
   const [storageBoxes, setStorageBoxes] = useState<StorageBox[]>([]);
   const [loading, setLoading] = useState(true);
@@ -170,7 +170,7 @@ export default function HetznerStoragePage() {
                     </div>
                     <div className="flex items-center text-gray-600">
                       <Server className="w-4 h-4 mr-1" />
-                      ID: {box.hetzner_id}
+                      Storage ID: {box.hetzner_id}
                     </div>
                   </div>
 
@@ -185,7 +185,7 @@ export default function HetznerStoragePage() {
                       variant="outline" 
                       size="sm" 
                       className="flex-1"
-                      onClick={() => router.push(`/app/hetzner-storage/${box.id}`)}
+                      onClick={() => router.push(`/app/storage-boxes/${box.id}`)}
                     >
                       Manage
                     </Button>

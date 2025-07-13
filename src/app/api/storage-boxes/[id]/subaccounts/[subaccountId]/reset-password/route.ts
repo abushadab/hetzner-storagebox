@@ -76,15 +76,15 @@ export async function POST(
         // Action initiated successfully
         console.log('Subaccount password reset action initiated successfully');
       } else if (result.action?.error) {
-        console.error('Hetzner API returned error:', result.action.error);
+        console.error('Storage API returned error:', result.action.error);
         return NextResponse.json({ 
-          error: result.action.error.message || 'Failed to reset password on Hetzner' 
+          error: result.action.error.message || 'Failed to reset password on storage server' 
         }, { status: 500 });
       }
     } catch (error) {
-      console.error('Hetzner API error:', error);
+      console.error('Storage API error:', error);
       return NextResponse.json({ 
-        error: error instanceof Error ? error.message : 'Failed to reset password on Hetzner' 
+        error: error instanceof Error ? error.message : 'Failed to reset password on storage server' 
       }, { status: 500 });
     }
 
@@ -101,7 +101,7 @@ export async function POST(
     if (updateError) {
       console.error('Database update error:', updateError);
       return NextResponse.json({ 
-        error: 'Password reset on Hetzner but failed to update database' 
+        error: 'Password reset on storage server but failed to update database' 
       }, { status: 500 });
     }
 

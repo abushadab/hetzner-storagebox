@@ -103,9 +103,9 @@ export default function StorageBoxDetailPage() {
       const data = await response.json();
       setSubaccounts(data.subaccounts || []);
       
-      // If no subaccounts in database, automatically sync from Hetzner API
+      // If no subaccounts in database, automatically sync from storage API
       if (!data.subaccounts || data.subaccounts.length === 0) {
-        console.log('No subaccounts found in database, syncing from Hetzner API...');
+        console.log('No subaccounts found in database, syncing from storage API...');
         await syncSubaccounts(false); // false = don't show toast notification
       }
     } catch (err) {
@@ -220,7 +220,7 @@ export default function StorageBoxDetailPage() {
       <div className="space-y-6 p-6">
         <Button 
           variant="ghost" 
-          onClick={() => router.push('/app/hetzner-storage')}
+          onClick={() => router.push('/app/storage-boxes')}
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Storage
@@ -241,7 +241,7 @@ export default function StorageBoxDetailPage() {
       <div className="flex items-center justify-between">
         <Button 
           variant="ghost" 
-          onClick={() => router.push('/app/hetzner-storage')}
+          onClick={() => router.push('/app/storage-boxes')}
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Storage
@@ -300,7 +300,7 @@ export default function StorageBoxDetailPage() {
                 <p className="font-medium">{storageBox.product}</p>
               </div>
               <div>
-                <p className="text-gray-500">ID</p>
+                <p className="text-gray-500">Storage ID</p>
                 <p className="font-medium">{storageBox.hetzner_id}</p>
               </div>
               <div>

@@ -81,7 +81,7 @@ export async function POST(
       });
 
       return NextResponse.json(
-        { error: 'Failed to sync with Hetzner API' },
+        { error: 'Failed to sync with storage API' },
         { status: 500 }
       );
     }
